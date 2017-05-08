@@ -1,0 +1,13 @@
+<launch>
+	<arg name="model" default='$(find beginner_tutorials)/urdf/dynamic.urdf' />
+	<arg name="gui" default="True" />
+	<param name="robot_description" textfile="$(arg model)" />
+	<param name="use_gui" value="$(arg gui)"/>
+
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find beginner_tutorials)/urdf.rviz" required="true" />
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+         <node name="nonkdl_dkin" pkg="beginner_tutorials" type="nonkdl_dkin" />
+	 <node name="kdl_dkin" pkg="beginner_tutorials" type="kdl_dkin" />
+	
+</launch>
