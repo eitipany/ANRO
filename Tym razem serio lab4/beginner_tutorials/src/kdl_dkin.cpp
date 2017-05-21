@@ -25,7 +25,7 @@ void msgReceived(const sensor_msgs::JointState &jointState){
         double d1 = 0.6;
 
 
-	 KDL::Chain chain;
+	 KDL::Chain chain; // Stworzenie łańcucha kinematycznego
 
         chain.addSegment(Segment(Joint(Joint::None),Frame(Frame::DH(0, 0, 0, 0))));
         chain.addSegment(Segment(Joint(Joint::RotZ),Frame(Frame::DH(0, 0, d1, 0))));
@@ -37,6 +37,7 @@ void msgReceived(const sensor_msgs::JointState &jointState){
         JntArray q(chain.getNrOfJoints());
         Frame F;
 	
+	
 
 
                 q(0)=t1;
@@ -45,7 +46,7 @@ void msgReceived(const sensor_msgs::JointState &jointState){
 
                 solver.JntToCart(q,F);
 
-                double x,y,z=0;
+                double x,y,z=0; // Współrzędne końcówki
 
                 x = F.p.data[0];
                 y = F.p.data[1]; 
