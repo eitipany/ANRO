@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<robot name="static">
+
+
+<link name="base_link">
+        <visual>
+                <geometry>
+                        <sphere radius="0.1"/>
+                </geometry>
+		<material name = "blue">
+			<color rgba = "0 0 1 1"/>
+		</material>
+        </visual>
+</link>
+  
+<link name="part0">
+    <visual>
+      <geometry>
+        <cylinder length="0.6" radius="0.2"/>
+      </geometry>
+    </visual>
+  </link>
+
+ <joint name="joint1" type="fixed">
+    <parent link="base_link"/>
+    <child link="part0"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+</joint>
+
+  <link name="part1">
+    <visual>
+      <geometry>
+        <cylinder length="0.3" radius="0.2"/>
+      </geometry>
+         <material name="blue">
+        <color rgba="0 0 .8 1"/>
+      </material>
+      <origin rpy="0 0 0" xyz="0 0 0.1"/>
+    </visual>
+  </link>
+
+  <joint name="part0part1" type="fixed">
+    <parent link="part0"/>
+    <child link="part1"/>
+    <origin xyz="0 0 0.3"/>
+  </joint>
+
+
+  <link name="part2">
+    <visual>
+      <geometry>
+        <cylinder length="1" radius="0.1"/>
+      </geometry>
+         <material name="white">
+             <color rgba="1 1 1 1"/>
+           </material>
+      <origin rpy="0 1.57 0" xyz="0.5 0 0"/>
+    </visual>
+  </link>
+
+  <joint name="part1part2" type="fixed">
+    <parent link="part1"/>
+    <child link="part2"/>
+    <origin xyz="0 0 0.2"/>
+  </joint>
+
+<link name="part3">
+<visual><geometry>
+<cylinder length="0.5" radius="0.08"/>
+</geometry>
+<material name="lime">
+        	<color rgba="0 255 0 1"/>
+</material>
+<origin rpy="0 1.57 0" xyz="0.25 0 0"/>
+</visual>
+</link>
+
+<joint name="part2part3" type="fixed">
+<parent link="part2"/>
+<child link="part3"/>
+<origin xyz="1 0 0"/>
+</joint>
+
+</robot>
