@@ -4,9 +4,9 @@
 	<param name="robot_description"  textfile="$(arg model)" />
 	<param name="use_gui" value="$(arg gui)"/>
 
-	<param name="d1" value="3" />
-	<param name="d2" value="3" />
-	<param name="d3" value="3" />
+	<param name="a2" value="1.0" />
+	<param name="a3" value="1.0" />
+	<param name="d1" value="0.6" />
 
 	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
 	<node name="jint" pkg="beginner_tutorials" type="jint" />

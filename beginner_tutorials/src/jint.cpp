@@ -24,6 +24,13 @@ void sigintHandler(int) {
 //publishTrajectoryPath
 geometry_msgs::PoseStamped poseStamped; 
 int main(int argc, char **argv){
+	
+
+
+	
+
+
+
 	ROS_INFO("tu je "); 	
 	double x,y,z,t, xxx, yyy, zzz;
 	double ox, oy, oz; 
@@ -41,7 +48,22 @@ int main(int argc, char **argv){
         nav_msgs::Path path;
         std::vector<geometry_msgs::PoseStamped> plan;
 
-	double d1,d2,d3;
+	
+	if(!n.getParam("a2", a2))
+		{
+			ROS_ERROR("Błąd pobrania. Użyte domyślne wartości.");	
+		}
+	if(!n.getParam("a3", a3))
+		{
+			ROS_ERROR("Błąd pobrania. Użyte domyślne wartości.");	
+		}
+
+	if(!n.getParam("d1", d1))
+		{
+			ROS_ERROR("Błąd pobrania. Użyte domyślne wartości.");	
+}
+
+//double d1,d2,d3;
 
 //	s.param<double>("d1",d1,3);
  //   	s.param<double>("d2",d2,3);
@@ -73,7 +95,7 @@ int main(int argc, char **argv){
 		ROS_INFO("Podaj zadane x y z i czas ");  
 		std::cin>>xxx>>yyy>>zzz>>t;
 				
-		zzz=zzz-0.6;
+		//zzz=zzz+0.6;
 		double e,f,c,A,B,G,cosB,cosG;
         
     double eps=0.01;
@@ -157,7 +179,7 @@ int main(int argc, char **argv){
                         poseStamped.header.frame_id="base_link";
                         poseStamped.pose.position.x=xx;
                         poseStamped.pose.position.y=yy;
-                        poseStamped.pose.position.z=zz+0.6; 			
+                        poseStamped.pose.position.z=zz; 			
 			ukl.publish(poseStamped); 
 			plan.push_back(poseStamped);
                         poseStamped.header.stamp = ros::Time::now();
